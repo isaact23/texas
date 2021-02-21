@@ -5,9 +5,6 @@ import os
 from playsound import playsound
 from gtts import gTTS as gtts
 
-#from subprocess import call # Used for voice synthesis
-#import CardDetector
-
 # Set to true to enable betting.
 do_bets = False
 
