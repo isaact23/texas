@@ -3,7 +3,7 @@
 import random, itertools, copy, sys
 import os
 from playsound import playsound
-from gtts import gTTS as gtts
+import pyttsx3
 
 # Set to true to enable betting.
 do_bets = False
@@ -77,15 +77,16 @@ NEURAL_SPEECH = ["Well, this is going to be a boring round.",
 DRAW = ["We tied. What are the odds?",
         "Tie game. How embarassing for both of us."]
 
+# Set up audio engine
+audio_engine = pyttsx3.init()
+audio_engine.setProperty('rate', 210)
+
 # Synthesize text as speech
 def say(text):
     print(text)
     try:
-        if os.path.exists("output.mp3"):
-            os.remove("output.mp3")
-        tts = gtts(text)
-        tts.save("output.mp3")
-        playsound("output.mp3")
+        audio_engine.say(text)
+        audio_engine.runAndWait()
     except:
         pass
 
